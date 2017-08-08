@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.lefull.bill.dao.CompanyDao">
+
+    <!--<cache/>-->
+
+    <resultMap id="RM_Company" type="cn.lefull.bill.model.Company">
+        <result property="companyId" column="company_id"/>
+        <result property="companyName" column="company_name"/>
+        <result property="alias" column="alias"/>
+        <result property="pattern" column="pattern"/>
+        <result property="linkman" column="linkman"/>
+        <result property="cityId" column="city_id"/>
+        <result property="phone" column="phone"/>
+        <result property="domainPrefix" column="domain_prefix"/>
+        <result property="operatorEmployeeId" column="operator_employee_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="deleteTime" column="delete_time"/>
+    </resultMap>
+
+    <select id="all" resultMap="RM_Company">
+        SELECT * FROM company
+    </select>
+
+    <select id="get" resultMap="RM_Company" parameterType="java.lang.Integer">
+        SELECT * FROM company WHERE company_id=#{id}
+    </select>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        DELETE FROM users WHERE company_id=#{id}
+    </delete>
+
+
+</mapper>
+

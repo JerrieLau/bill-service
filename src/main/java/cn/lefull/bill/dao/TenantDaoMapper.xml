@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.lefull.bill.dao.TenantDao">
+
+    <!--<cache/>-->
+
+    <resultMap id="RM_Tenant" type="cn.lefull.bill.model.Tenant">
+        <result property="tenantId" column="tenant_id"/>
+        <result property="phone" column="phone"/>
+        <result property="emergencyPhone" column="emergency_phone"/>
+        <result property="name" column="name"/>
+        <result property="emergencyContact" column="emergency_contact"/>
+        <result property="idcard" column="idcard"/>
+        <result property="idcardType" column="idcard_type"/>
+        <result property="interpersonalRelationConfigurationId" column="interpersonal_relation_configuration_id"/>
+        <result property="gender" column="gender"/>
+        <result property="password" column="password"/>
+        <result property="weixinOpenid" column="weixin_openid"/>
+        <result property="isVirtual" column="is_virtual"/>
+        <result property="remarks" column="remarks"/>
+        <result property="operatorEmployeeId" column="operator_employee_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="deleteTime" column="delete_time"/>
+    </resultMap>
+
+    <select id="all" resultMap="RM_Tenant">
+        SELECT * FROM tenant
+    </select>
+
+    <select id="get" resultMap="RM_Tenant" parameterType="java.lang.Integer">
+        SELECT * FROM tenant WHERE tenant_id=#{id}
+    </select>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        DELETE FROM users WHERE tenant_id=#{id}
+    </delete>
+
+
+</mapper>
+

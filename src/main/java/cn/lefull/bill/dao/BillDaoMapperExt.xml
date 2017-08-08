@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.lefull.bill.dao.BillDao">
+
+    <!--<cache/>-->
+
+    <resultMap id="RM_ExtBill" type="cn.lefull.bill.model.RunningBillVo">
+        <result property="billId" column="bill_id"/>
+        <result property="billReceivableId" column="bill_receivable_id"/>
+        <result property="documentNumber" column="document_number"/>
+        <result property="roomId" column="room_id"/>
+        <result property="tenantName" column="name"/>
+        <result property="totalMoney" column="total_money"/>
+        <result property="realPrice" column="real_price"/>
+
+        <collection property="costRelationships" column="bill_receivable_id"
+                    ofType="cn.lefull.bill.model.CostRelationshipVo"
+                    select="cn.lefull.bill.dao.CostRelationshipDao.getByBillReceivableId"></collection>
+    </resultMap>
+
+    <!--查询实收流水账单-->
+    <select id="queryRunningBill" resultMap="RM_ExtBill">
+        SELECT
+          b.document_number,
+          br.service_code,
+          br.room_id,
+          t.name,
+          b.total_money,
+          b.real_price
+        FROM bill b LEFT JOIN bill_receivable br ON b.bill_receivable_id = br.bill_receivable_id
+          LEFT JOIN tenant t ON br.tenant_id = t.tenant_id
+    </select>
+
+</mapper>
+

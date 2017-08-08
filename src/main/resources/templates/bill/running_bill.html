@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>实收流水</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>票据号</td>
+        <td>操作类型</td>
+        <td>房间号</td>
+        <td>租客</td>
+        <td>费用科目</td>
+        <td>账单金额</td>
+        <td>收支金额</td>
+    </tr>
+    <tr th:each="bill : ${paging.list}">
+        <td th:text="${bill.documentNumber}">tk01071422</td>
+        <td th:text="${bill.documentNumber}">退租</td>
+        <td th:text="${bill.roomId}">3004</td>
+        <td th:text="${bill.tenantName}">张杰</td>
+        <td th:text="${bill.documentNumber}">租金：-3400</td>
+        <td th:text="${bill.documentNumber}">-3400</td>
+        <td th:text="${bill.documentNumber}">-3400</td>
+    </tr>
+</table>
+
+<br />
+
+<form action="/bill/running_bill" method="get">
+    第<span th:text="${paging.pageNum}">1</span>页 &nbsp;&nbsp;
+    <span th:text="${paging.pageSize}">10</span>条/页
+</form>
+</body>
+</html>

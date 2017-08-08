@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.lefull.bill.dao.BillReceivableDao">
+
+    <!--<cache/>-->
+
+    <resultMap id="RM_BillReceivable" type="cn.lefull.bill.model.BillReceivable">
+        <result property="billReceivableId" column="bill_receivable_id"/>
+        <result property="tableId" column="table_id"/>
+        <result property="tableName" column="table_name"/>
+        <result property="tenantId" column="tenant_id"/>
+        <result property="serviceCode" column="service_code"/>
+        <result property="contractId" column="contract_id"/>
+        <result property="apartmentId" column="apartment_id"/>
+        <result property="roomId" column="room_id"/>
+        <result property="isIous" column="is_ious"/>
+        <result property="currentTerm" column="current_term"/>
+        <result property="onetimeTerm" column="onetime_term"/>
+        <result property="isFirstIousTerm" column="is_first_ious_term"/>
+        <result property="parentBillReceivableId" column="parent_bill_receivable_id"/>
+        <result property="planTime" column="plan_time"/>
+        <result property="storeBillingTime" column="store_billing_time"/>
+        <result property="serviceFee" column="service_fee"/>
+        <result property="billType" column="bill_type"/>
+        <result property="receivableMoney" column="receivable_money"/>
+        <result property="remarks" column="remarks"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="deleteTime" column="delete_time"/>
+        <result property="isDelete" column="is_delete"/>
+    </resultMap>
+
+    <select id="all" resultMap="RM_BillReceivable">
+        SELECT * FROM bill_receivable
+    </select>
+
+    <select id="get" resultMap="RM_BillReceivable" parameterType="java.lang.Integer">
+        SELECT * FROM bill_receivable WHERE bill_receivable_id=#{id}
+    </select>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        DELETE FROM users WHERE bill_receivable_id=#{id}
+    </delete>
+
+
+</mapper>
+

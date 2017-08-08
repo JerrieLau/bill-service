@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.lefull.bill.dao.BillDao">
+
+    <!--<cache/>-->
+
+    <resultMap id="RM_Bill" type="cn.lefull.bill.model.Bill">
+        <result property="billId" column="bill_id"/>
+        <result property="billReceivableId" column="bill_receivable_id"/>
+        <result property="companyId" column="company_id"/>
+        <result property="apartmentId" column="apartment_id"/>
+        <result property="tableName" column="table_name"/>
+        <result property="cashMoney" column="cash_money"/>
+        <result property="cashCertificate" column="cash_certificate"/>
+        <result property="bankCardId" column="bank_card_id"/>
+        <result property="bankCardNumber" column="bank_card_number"/>
+        <result property="bankCardMoney" column="bank_card_money"/>
+        <result property="bankCardCertificate" column="bank_card_certificate"/>
+        <result property="lossesMoney" column="losses_money"/>
+        <result property="lossesCertificate" column="losses_certificate"/>
+        <result property="lossesApartmentId" column="losses_apartment_id"/>
+        <result property="lossesBankCardNumber" column="losses_bank_card_number"/>
+        <result property="lossesBankCardId" column="losses_bank_card_id"/>
+        <result property="lossesBankCardAccount" column="losses_bank_card_account"/>
+        <result property="lossesStatus" column="losses_status"/>
+        <result property="alipayMoney" column="alipay_money"/>
+        <result property="alipayCertificate" column="alipay_certificate"/>
+        <result property="weixinMoney" column="weixin_money"/>
+        <result property="weixinCertificate" column="weixin_certificate"/>
+        <result property="couponMoney" column="coupon_money"/>
+        <result property="couponNumber" column="coupon_number"/>
+        <result property="balanceMoney" column="balance_money"/>
+        <result property="iousSupplierMoney" column="ious_supplier_money"/>
+        <result property="iousSupplierCertificate" column="ious_supplier_certificate"/>
+        <result property="transferServiceMoney" column="transfer_service_money"/>
+        <result property="transferServiceMark" column="transfer_service_mark"/>
+        <result property="lehuiMoney" column="lehui_money"/>
+        <result property="lehuiCertificate" column="lehui_certificate"/>
+        <result property="spdQrcodeMoney" column="spd_qrcode_money"/>
+        <result property="subsidyMoney" column="subsidy_money"/>
+        <result property="subsidyCertificate" column="subsidy_certificate"/>
+        <result property="spdQrcodeCertificate" column="spd_qrcode_certificate"/>
+        <result property="totalMoney" column="total_money"/>
+        <result property="realPrice" column="real_price"/>
+        <result property="documentNumber" column="document_number"/>
+        <result property="storeBillingTime" column="store_billing_time"/>
+        <result property="checkMoney" column="check_money"/>
+        <result property="checkRemarks" column="check_remarks"/>
+        <result property="qianfangMoney" column="qianfang_money"/>
+        <result property="qianfangRemarks" column="qianfang_remarks"/>
+        <result property="billType" column="bill_type"/>
+        <result property="audit" column="audit"/>
+        <result property="auditAlone" column="audit_alone"/>
+        <result property="auditEmployeeId" column="audit_employee_id"/>
+        <result property="auditAloneEmployeeId" column="audit_alone_employee_id"/>
+        <result property="financeAudit" column="finance_audit"/>
+        <result property="financeEmployeeId" column="finance_employee_id"/>
+        <result property="isClearing" column="is_clearing"/>
+        <result property="isClosing" column="is_closing"/>
+        <result property="clearingEmployeeId" column="clearing_employee_id"/>
+        <result property="closingEmployeeId" column="closing_employee_id"/>
+        <result property="isWriteOff" column="is_write_off"/>
+        <result property="isRefund" column="is_refund"/>
+        <result property="isReject" column="is_reject"/>
+        <result property="operatorEmployeeId" column="operator_employee_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="deleteTime" column="delete_time"/>
+    </resultMap>
+
+    <select id="all" resultMap="RM_Bill">
+        SELECT * FROM bill
+    </select>
+
+    <select id="get" resultMap="RM_Bill" parameterType="java.lang.Integer">
+        SELECT * FROM bill WHERE bill_id=#{id}
+    </select>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        DELETE FROM users WHERE bill_id=#{id}
+    </delete>
+
+
+</mapper>
+

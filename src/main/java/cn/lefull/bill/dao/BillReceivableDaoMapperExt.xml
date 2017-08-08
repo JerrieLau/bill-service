@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.lefull.bill.dao.BillReceivableDao">
+
+    <select id="getByBillReceivableId" resultMap="RM_BillReceivable" parameterType="java.lang.Integer">
+        SELECT * FROM bill_receivable WHERE bill_receivable_id=#{id}
+    </select>
+
+</mapper>
+

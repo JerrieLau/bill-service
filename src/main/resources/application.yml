@@ -1,0 +1,65 @@
+spring:
+
+  profiles:
+    active: dev
+
+  #数据源配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://$MYSQL_DB_HOST:$MYSQL_DB_PORT/test?useUnicode=true&useSSL=false
+    username: $MYSQL_DB_USER
+    password: $MYSQL_DB_PASSWORD
+    hikari:
+      max-lifetime: 1765000
+      maximum-pool-size: 5
+      connection-test-query: SELECT 1
+      minimum-idle: 1
+
+
+  #应用名称
+  application:
+    name: bill-service
+
+  thymeleaf:
+    cache: false
+#    check-template: true
+    check-template-location: true
+    content-type: text/html
+    enabled: true
+    encoding: UTF-8
+    mode: HTML5
+    prefix: classpath:/templates/
+    suffix: .html
+
+#mybatis配置
+mybatis:
+  mapper-locations: classpath:cn/lefull/bill/dao/*.xml
+  type-aliases-package: cn.lefull.bill.model
+  configuration:
+    aggressive-lazy-loading: false
+
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: false
+  support-methods-arguments: true
+  params: count=countSql
+  offset-as-page-num: true
+
+
+logging:
+  level:
+    cn.lefull.bill.dao: debug
+
+
+
+
+
+
+
+
+
+
+
+
+
