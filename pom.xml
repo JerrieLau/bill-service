@@ -24,19 +24,6 @@
         <java.version>1.8</java.version>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>nexus-daocloud</id>
-            <name>Nexus daocloud</name>
-            <url>http://nexus.daocloud.io/repository/maven-public/</url>
-        </repository> 
-        <!-- 可以设置多个repository，在实际的开发过程中会从中心仓库取到 -->
-        <repository>
-            <id>central</id>
-             <url>http://repo1.maven.org/maven2/</url>
-        </repository>
-   </repositories>
-
     <dependencies>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>

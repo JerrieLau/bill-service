@@ -157,10 +157,10 @@ under the License.
     </mirror>
      -->
     <mirror>
-        <id>nexus-aliyun</id>
+        <id>nexus-daocloud</id>
         <mirrorOf>*</mirrorOf>
-        <name>Nexus aliyun</name>
-        <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        <name>Nexus Daocloud</name>
+        <url>http://nexus.daocloud.io/repository/maven-public/</url>
     </mirror> 
   </mirrors>
 
